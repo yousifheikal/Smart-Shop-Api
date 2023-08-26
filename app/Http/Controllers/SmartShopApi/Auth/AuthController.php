@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class AuthController extends Controller
@@ -37,6 +38,23 @@ class AuthController extends Controller
         }
         return $this->createNewToken($token);
     }
+
+
+    public function handleGoogleCallback($token){
+
+        $user = Socialite::driver('google')->user();
+
+        // Return the user's information as JSON
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'email' => $user->email,
+            'name' => $user->name,
+            'oauth_id' => $user->id,
+        ]);
+    }
+
     /**
      * Register a User.
      *
