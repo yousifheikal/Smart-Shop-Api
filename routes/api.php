@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\SmartShopApi\Auth\AuthController;
-use App\Http\Controllers\smartShopApi\Auth\Sociallite\GoogleController;
-use App\Http\Controllers\SmartShopApi\Categories\CategoriesController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\SmartShopApi\Auth\AuthController;
+use App\Http\Controllers\SmartShopApi\Products\ProductsController;
+use App\Http\Controllers\SmartShopApi\Categories\CategoriesController;
+use App\Http\Controllers\smartShopApi\Auth\Sociallite\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,9 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-            // Group routing (Auth App Smart-Shop)
+// Auth::routes(['verify' => true]);
+
+// Group routing (Auth App Smart-Shop)
 Route::controller(AuthController::class)
     ->prefix('auth')
     ->middleware(['api', 'checkPassword'])
@@ -29,11 +33,9 @@ Route::controller(AuthController::class)
         Route::post('/logout', 'logout');
         Route::post('/refresh', 'refresh');
         Route::get('/user-profile', 'userProfile');
-//        Route::post('/google/redirect', 'handleGoogleRedirect')->name('google');
-//        Route::get('/google/callback', 'handleGoogleCallback');
 });
 
-
+// Group routing Categories
 Route::controller(CategoriesController::class)
     ->prefix('categories')
     ->middleware('api')
@@ -43,6 +45,24 @@ Route::controller(CategoriesController::class)
         Route::post('add', 'store');
         Route::put('update', 'update');
         Route::delete('delete', 'destroy');
+});
+
+// Group routing Categories
+Route::controller(ProductsController::class)
+    ->prefix('products')
+    ->middleware('api')
+    ->group(function (){
+
+        Route::get('all', 'getAllProducts');
+        Route::post('add', 'store');
+        Route::put('update', 'update');
+        Route::delete('delete', 'destroy');
+        // Route::delete('delete-all', 'truncateAllProduct');
+        Route::get('single-Product', 'getSingleProduct');
+        Route::get('popular-products', 'popularProduct');
+        Route::get('similar-products', 'similarProducts');
+        Route::get('lowest-price', 'sortingASC');
+        Route::get('highest-price', 'sortingDESC');
 
 });
 

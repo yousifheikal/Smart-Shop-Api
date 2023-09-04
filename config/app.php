@@ -158,6 +158,7 @@ return [
     'providers' => ServiceProvider::defaultProviders()->merge([
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Ichtrojan\Otp\OtpServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -173,6 +174,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\RepositoriesServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -189,6 +191,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Otp' => Ichtrojan\Otp\Otp::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

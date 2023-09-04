@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,8 +25,8 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'utype',
-        'oauth_id',
-        'oauth_type'
+        'code',
+        'expired_at'
     ];
 
     /**
@@ -48,6 +48,14 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function generateCode(){
+
+        $this->timestamps = false;
+        $this->code = rand(1000, 9999);
+        $this->expired_at = now()->addMinute(5);
+        $this->save();
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
