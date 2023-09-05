@@ -20,3 +20,37 @@ Category feature organizes products. It allows creating, retrieving, updating an
 
 *    Product :
 Product management feature enables administrators to manage the products available in the e-commerce platform. It includes functionalities such as adding new products, updating product details (e.g., name, description, price, images....etc),  associating products with categories ,enabling delete product,retrieve similar products and popular products, and sorting products price for desire user from lowest to highest vice versa.
+
+<h2> Documentation</h2>
+
+<h2>💻 Built with</h2>
+
+Technologies and tools used in the project:
+
+*   Laravel 
+*   Mysql
+*   JWT
+*   Design Pattern(Repository Pattern)
+
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Installation laravel project</p>
+
+```
+composer create-project laravel/laravel smart-shop-api
+
+```
+
+<p>2. Connection Database</p>
+
+```
+php artisan ser
+```
+
+<p>3. JWT Authentication</p>
+
+```
+composer require tymon/jwt-auth
+
+```
