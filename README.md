@@ -16,4 +16,4 @@
 Authentication feature enables users to create an account, login, and manage their credentials securely. It includes functionalities such as user registration, login,logout, password reset,refreshToken,user-profile and authentication token management, all functionalities i used via JWT Auth. Users can access protected resources and perform actions based on their authorization level.
 
 *   Categories :
-* Category feature organizes products. It allows creating, retrieving, updating and deleting categories. Products can be associated with one or multiple categories, allowing users to browse and filter products based on their category preferences.
+Category feature organizes products. It allows creating, retrieving, updating and deleting categories. Products can be associated with one or multiple categories, allowing users to browse and filter products based on their category preferences.
