@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Smart Shop <span>(E-commerce-project)</span></h1>
 
-<p align="center"><img src="https://github.com/yousifheikal/Smart-Shop-Api/assets/96316936/10fd9512-807b-458d-9026-602c5388fd86" alt="project-image" width="750"></p>
+<p align="center"><img src="https://github.com/yousifheikal/Smart-Shop-Api/assets/96316936/10fd9512-807b-458d-9026-602c5388fd86" alt="project-image" width="650"></p>
 
 <h2>Introduction:</h2>
 <p id="description">The e-commerce API project built with Laravel & Mysql offers a comprehensive set of features that cover user management, product management, cart management, order management, brand management, review management, coupon management, error handling, pagination, and more. These features collectively provide a robust and scalable foundation for building an advanced e-commerce platform.</p>
