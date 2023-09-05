@@ -17,3 +17,6 @@ Authentication feature enables users to create an account, login, and manage the
 
 *   Categories :
 Category feature organizes products. It allows creating, retrieving, updating and deleting categories. Products can be associated with one or multiple categories, allowing users to browse and filter products based on their category preferences.
+
+*    Product :
+Product management feature enables administrators to manage the products available in the e-commerce platform. It includes functionalities such as adding new products, updating product details (e.g., name, description, price, images....etc),  associating products with categories ,enabling delete product,retrieve similar products and popular products, and sorting products price for desire user from lowest to highest vice versa.
