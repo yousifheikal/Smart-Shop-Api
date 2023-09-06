@@ -31,7 +31,7 @@ Technologies and tools used in the project:
 *   Mysql
 *   JWT
 *   Design Pattern(Repository Pattern)
-
+*   Faker
 
 <h2>🛠️ Installation Steps:</h2>
 
