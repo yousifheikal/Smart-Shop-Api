@@ -17,10 +17,12 @@ Authentication feature enables users to create an account, login, and manage the
 
 * User Management: The user management feature allows administrators to manage user accounts, roles, and permissions. It includes functionalities such as creating user profiles, updating user information, enabling or disabling user accounts, and assigning appropriate roles and permissions ex:(create category, product, etc....) .
 
-*   Categories :
+* Review Management: The review management feature allows users to leave reviews and ratings for products they have purchased or used, but you must login in website before rating any product.
+
+* Categories :
 Category feature organizes products. It allows creating, retrieving, updating and deleting categories. Products can be associated with one or multiple categories, allowing users to browse and filter products based on their category preferences.
 
-*    Product :
+* Product :
 Product management feature enables administrators to manage the products available in the e-commerce platform. It includes functionalities such as adding new products, updating product details (e.g., name, description, price, images....etc),  associating products with categories ,enabling delete product,retrieve similar products and popular products, and sorting products price for desire user from lowest to highest vice versa.
 
 <h2> Documentation</h2>
