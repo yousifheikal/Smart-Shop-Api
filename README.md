@@ -25,6 +25,8 @@ Product management feature enables administrators to manage the products availab
 
 * Review Management: The review management feature allows users to leave reviews and ratings for products they have purchased or used, but you must login in website before rating any product.
 
+* Wishlist Management: The wishlist management feature allows users to add products to their wishlist, display all product in wishlist, remove products, save this wislist  each user, allowing users to resume their shopping experience at a later time.
+* 
 <h2> Documentation</h2>
 
 <h2>💻 Built with</h2>
