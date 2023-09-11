@@ -86,7 +86,7 @@ php artisan make:resource ExampleResource
 php artisan mi:f --seed
 ```
 
-<p>3. connection with local server</p>
+<p>7. connection with local server</p>
 
 ```
 php artisan ser
