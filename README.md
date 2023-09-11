@@ -55,44 +55,32 @@ Technologies and tools used in the project:
 ```
 composer create-project laravel/laravel smart-shop-api
 
-```
-
 <p>2. JWT Authentication </p>
 
 ```
 composer require tymon/jwt-auth
-```
 
 <p>3. Connection Database</p>
 
 ```
 php artisan migrate
 
-```
-
 <p>4. Create model,migration,controller,factory,seeder and validation</p>
 
 ```
 php artisan make:model example -a
 
-```
-
 <p>5. create JsonResource</p>
 
 ```
 php artisan make:resource ExampleResource
-```
 
 <p>6. connection and test with fake data</p>
 
 ```
 php artisan mi:f --seed
 
-```
-
 <p>3. connection with local server</p>
 
 ```
 php artisan ser
-
-```
