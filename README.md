@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Smart Shop <span>(E-commerce-project)</span></h1>
 
-<p align="center"><img src="https://sevenblock.net/assets/images/projects/Smart%20Shop.png" alt="project-image" width="800"></p>
+<p align="center"><img src="https://sevenblock.net/assets/images/projects/Smart%20Shop.png" alt="project-image" width="600"></p>
 
 <h2>Introduction:</h2>
 <p id="description">The e-commerce API project built with Laravel & Mysql offers a comprehensive set of features that cover user management, product management, cart management, order management, brand management, review management, coupon management, error handling, pagination, and more. These features collectively provide a robust and scalable foundation for building an advanced e-commerce platform.</p>
