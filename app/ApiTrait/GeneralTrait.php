@@ -21,7 +21,7 @@ trait GeneralTrait
     }
 
     // if u have not any error show this response Json
-    public function returnSuccessMessage($errNum = "S000", $msg = ""){
+    public function returnSuccessMessage($errNum = "401", $msg = ""){
 
         return response()->json([
             'status' => true,

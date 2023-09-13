@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\smartShopApi\Auth\Sociallite\GoogleController;
+// use App\Http\Controllers\smartShopApi\Auth\Sociallite\GoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +29,5 @@ Route::middleware([
 });
 
 
-Route::get('auth/google/redirect', [GoogleController::class, 'handleGoogleRedirect'])->name('google');
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+// Route::get('auth/google/redirect', [GoogleController::class, 'handleGoogleRedirect'])->name('google');
+// Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

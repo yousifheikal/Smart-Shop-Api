@@ -15,14 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->decimal('regular_price');
-            $table->decimal('sale_price')->nullable();
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
-            $table->string('image')->nullable();
-            $table->enum('stock_status', ['instock', 'outstock']);
-            $table->softDeletes();
+            $table->text('detail');
+            $table->integer('price');
+            $table->integer('stock');
+            $table->integer('discount');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

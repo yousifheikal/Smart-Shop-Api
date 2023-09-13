@@ -3,11 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\SmartShopApi\Auth\AuthController;
-use App\Http\Controllers\SmartShopApi\Products\ProductsController;
 use App\Http\Controllers\SmartShopApi\Categories\CategoriesController;
-use App\Http\Controllers\smartShopApi\Auth\Sociallite\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,56 +35,64 @@ Route::controller(AuthController::class)
         Route::post('/login', 'login');
         Route::post('/logout', 'logout');
         Route::post('/refresh', 'refresh');
-        Route::get('/user-profile', 'userProfile');
+        Route::get('/user-profile', 'userProfile')->name('user.profile');
 });
 
-// Group routing Categories
+// Routing to manage users features
+Route::controller(UserController::class)
+    ->group(function (){
+
+        Route::apiResource('/user', UserController::class);
+});
+
+
+// Routing to manage category features
 Route::controller(CategoriesController::class)
-    ->prefix('categories')
+    ->prefix('category')
     ->middleware('api')
     ->group(function (){
 
         Route::get('all', 'index');
+        Route::get('/{id}', 'getSingleCategory');
         Route::post('add', 'store');
-        Route::put('update', 'update');
-        Route::delete('delete', 'destroy');
+        Route::put('/{id}', 'update');
+        Route::delete('/{id}', 'destroy');
+        Route::get('/{id}/products', 'showByCategory')->name('showBy.Category');
+
 });
 
-// Group routing Categories
-Route::controller(ProductsController::class)
-    ->prefix('products')
-    ->middleware('api')
+// Routing to manage product features
+Route::controller(ProductController::class)
     ->group(function (){
 
-        Route::get('all', 'getAllProducts');
-        Route::post('add', 'store');
-        Route::put('update', 'update');
-        Route::delete('delete', 'destroy');
-        // Route::delete('delete-all', 'truncateAllProduct');
-        Route::get('single-Product', 'getSingleProduct');
-        Route::get('popular-products', 'popularProduct');
-        Route::get('similar-products', 'similarProducts');
-        Route::get('lowest-price', 'sortingASC');
-        Route::get('highest-price', 'sortingDESC');
+        Route::apiResource('/product', ProductController::class);
 
 });
 
+// Routing to manage review features
+Route::prefix('/product')->group(function () {
 
+    Route::apiResource('/{product}/reviews', ReviewController::class);
 
-//Route::get('/auth/google/callback', function () {
-//    $user = Socialite::driver('google')->stateless()->user();
-//
-//    // Return the user's information as JSON
-//    return response()->json([
-//        'email' => $user->email,
-//        'name' => $user->name,
-//    ]);
-//})->middleware('api');
+});
 
-//Route::controller(GoogleController::class)
-//    ->middleware(['api', 'checkPassword'])
-//    ->group(function () {
-//
-//        Route::get('auth/google/redirect', 'handleGoogleRedirect')->name('google');
-//        Route::get('auth/google/callback', 'handleGoogleCallback');
-//});
+// Routing to manage cart features
+Route::controller(CartController::class)
+    ->group(function (){
+
+        Route::apiResource('/cart', CartController::class);
+});
+
+// Routing to manage wishlist features
+Route::controller(WishlistController::class)
+    ->group(function (){
+
+        Route::apiResource('/wishlist', WishlistController::class);
+});
+
+// Routing to manage ContactUs features
+Route::controller(ContactUsController::class)
+    ->group(function (){
+
+        Route::apiResource('/contact-us', ContactUsController::class);
+});

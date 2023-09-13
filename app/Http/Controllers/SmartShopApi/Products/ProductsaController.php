@@ -23,9 +23,9 @@ class ProductsController extends Controller
         return $this->product->getAllProducts();
     }
 
-    public function getSingleProduct(Request $request){
+    public function getSingleProduct($id){
 
-        return $this->product->getSingleProduct($request);
+        return $this->product->getSingleProduct($id);
     }
 
 
@@ -34,14 +34,14 @@ class ProductsController extends Controller
         return $this->product->store($request);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
 
-        return $this->product->update($request);
+        return $this->product->update($request, $id);
     }
 
-    public function destroy(Request $request){
+    public function destroy($id){
 
-        return $this->product->destroy($request);
+        return $this->product->destroy($id);
     }
 
     // public function truncateAllProduct(){
@@ -67,6 +67,11 @@ class ProductsController extends Controller
     public function sortingDESC(){
 
         return $this->product->sortingDESC();
+    }
+
+    public function getProductsWithCategory($id){
+
+        return $this->product->getProductsWithCategory($id);
     }
 
 }

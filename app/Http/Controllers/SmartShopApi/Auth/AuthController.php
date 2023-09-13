@@ -18,7 +18,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'allUser']]);
     }
     /**
      * Get a JWT via given credentials.
@@ -30,6 +30,7 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
+
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -40,20 +41,20 @@ class AuthController extends Controller
     }
 
 
-    public function handleGoogleCallback($token){
+    // public function handleGoogleCallback($token){
 
-        $user = Socialite::driver('google')->user();
+    //     $user = Socialite::driver('google')->user();
 
-        // Return the user's information as JSON
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'email' => $user->email,
-            'name' => $user->name,
-            'oauth_id' => $user->id,
-        ]);
-    }
+    //     // Return the user's information as JSON
+    //     return response()->json([
+    //         'access_token' => $token,
+    //         'token_type' => 'bearer',
+    //         'expires_in' => auth()->factory()->getTTL() * 60,
+    //         'email' => $user->email,
+    //         'name' => $user->name,
+    //         'oauth_id' => $user->id,
+    //     ]);
+    // }
 
     /**
      * Register a User.
@@ -72,7 +73,8 @@ class AuthController extends Controller
         }
         $user = User::create(array_merge(
             $validator->validated(),
-            ['password' => bcrypt($request->password)]
+            ['password' => bcrypt($request->password), ],
+
         ));
         return response()->json([
             'message' => 'User successfully registered',
@@ -119,5 +121,11 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()
         ]);
+    }
+
+    public function allUser()
+    {
+        $users = User::paginate(10);
+        return response()->json($users);
     }
 }

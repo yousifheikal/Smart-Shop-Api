@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers\SmartShopApi\Categories;
 
-use App\ApiTrait\GeneralTrait;
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\ApiTrait\GeneralTrait;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Product\ProductCollection;
 
 class CategoriesController extends Controller
 {
     use GeneralTrait;
+
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except('index', 'show', 'showByCategory', 'getSingleCategory');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -19,15 +28,15 @@ class CategoriesController extends Controller
         //
         $Categories = Category::all();
 
-        return $this->returnData('categories', $Categories, 'Categories successfully retrieved');
+        return  CategoryResource::collection($Categories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getSingleCategory($id)
     {
         //
+        $Category = Category::where('id', $id)->first();
+
+        return $this->returnData('Category', $Category, 'Category successfully retrieved');
     }
 
     /**
@@ -61,22 +70,14 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //
         //Validation data before Add
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
+            // 'id' => 'required',
             'name' => 'required|max:100'
         ]);
 
@@ -95,23 +96,22 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        //
-        //Validation data before update
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
-
-        //if any errors for validate show this error
-        if ($validator->fails())
-            return $this->returnError('404', $validator->errors());
-
         //data selected for deleted
-        Category::find($request->id)->delete();
+        Category::findOrfail($id)->delete();
 
         //return success msg
         return $this->returnSuccessMessage('200', 'Category successfully deleted');
 
+    }
+
+    public function showByCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $products = $category->products;
+        return  ProductCollection::collection($products);
+
+        return response()->json($products);
     }
 }

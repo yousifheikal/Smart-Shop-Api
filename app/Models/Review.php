@@ -6,16 +6,19 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Review extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'product_id',
+        'customer',
+        'review',
+        'star'
     ];
 
     public function products(){
 
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

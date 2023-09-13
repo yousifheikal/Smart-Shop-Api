@@ -2,27 +2,42 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Cart;
+use App\Models\Review;
+use App\Models\Category;
+use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'category_id',
         'name',
-        'description',
-        'regular_price',
-        'sale_price',
-        'color',
-        'size',
-        'image',
-        'stock_status'
+        'detail',
+        'price',
+        'stock',
+        'discount'
     ];
 
-    public function Category(){
-        return $this->belongsTo(Category::class, 'category_id');
+    public function categories(){
+
+        return $this->belongsTo(Category::class);
+    }
+
+    public function reviews(){
+
+        return $this->hasMany(Review::class);
+    }
+
+    public function cart()
+    {
+         return $this->hasMany(Cart::class);
+    }
+
+    public function wishlist()
+    {
+         return $this->hasMany(Wishlist::class);
     }
 }

@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductsApi implements ProductsApiInterface
 {
+    //Trait using returen all response Api
     use GeneralTrait;
+
     public function getAllProducts(){
 
         $Products = Product::all();
@@ -17,18 +19,9 @@ class ProductsApi implements ProductsApiInterface
         return $this->returnData('allProducts', $Products, 'Products successfully retrieved');
     }
 
-    public function getSingleProduct($request){
+    public function getSingleProduct($id){
 
-        //Validation data before Add
-        $validator = Validator::make($request->all(), [
-            'id' => 'required'
-        ]);
-
-        //if any errors for validate show this error
-        if ($validator->fails())
-            return $this->returnError('404', $validator->errors());
-
-        $product = Product::findOrfail($request->id);
+        $product = Product::findOrfail($id);
 
         return $this->returnData('singleProduct', $product, 'Product successfully retrieved');
     }
@@ -72,12 +65,10 @@ class ProductsApi implements ProductsApiInterface
     /**
      * Update the specified resource in storage.
      */
-    public function update($request)
+    public function update($request, $id)
     {
-        //
         //Validation data before update
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
             'category_id' => 'required',
             'name' => 'required|max:100',
             'description' => 'required',
@@ -93,7 +84,7 @@ class ProductsApi implements ProductsApiInterface
         if ($validator->fails())
             return $this->returnError('404', $validator->errors());
 
-        $product = Product::find($request->id);
+        $product = Product::findOrfail($id);
 
         $product->update([
             'category_id' => $request->category_id,
@@ -109,20 +100,10 @@ class ProductsApi implements ProductsApiInterface
         return $this->returnSuccessMessage('200', 'Product successfully updated');
     }
 
-    public function destroy($request)
+    public function destroy($id)
     {
-        //
-        //Validation data before delete
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
-
-        //if any errors for validate show this error
-        if ($validator->fails())
-            return $this->returnError('404', $validator->errors());
-
         //data selected for deleted
-        Product::find($request->id)->delete();
+        Product::findOrfail($id)->delete();
 
         //return success msg
         return $this->returnSuccessMessage('200', 'Product successfully deleted');
@@ -162,5 +143,14 @@ class ProductsApi implements ProductsApiInterface
 
         return $this->returnData('highest price', $highest_price, 'highest_price successfully retrieved');
     }
+
+    public function getProductsWithCategory($id)
+    {
+        $productsWithCategory = Product::where('category_id', $id)->get();
+
+        return $this->returnData('productsWithCategory', $productsWithCategory, 'productsWithCategory successfully retrieved');
+
+    }
+
 
 }

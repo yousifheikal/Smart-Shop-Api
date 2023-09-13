@@ -6,13 +6,13 @@ interface ProductsApiInterface
 {
     public function getAllProducts();
 
-    public function getSingleProduct($request);
+    public function getSingleProduct($id);
 
     public function store($request);
 
-    public function update($request);
+    public function update($request, $id);
 
-    public function destroy($request);
+    public function destroy($id);
 
     // public function truncateAllProduct();
 
@@ -24,4 +24,5 @@ interface ProductsApiInterface
 
     public function sortingDESC();
 
+    public function getProductsWithCategory($id);
 }
