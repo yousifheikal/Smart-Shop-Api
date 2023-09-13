@@ -47,6 +47,7 @@
 * Trait: The trait feature, i created general-trait it allows retrieve response message (success msg, error msg, and return data), Which led to returning an appropriate response for each endpoint.
 
 <h2> Documentation</h2>
+[Postman doucments link](https://documenter.getpostman.com/view/27663911/2s9YC4Tsi5)
 
 <h2>💻 Built with</h2>
 
