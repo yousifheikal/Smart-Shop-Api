@@ -48,7 +48,6 @@
 
 <h2> Documentation</h2>
 [Postman doucments link](https://documenter.getpostman.com/view/27663911/2s9YC4Tsi5)
-[ui & ux project link](https://www.figma.com/file/4Bowj9j7hNZMeRCbtYOOz7/smart-shop-traning(smart-code-academy)?node-id=0%3A1&mode=dev)
 
 <h2>💻 Built with</h2>
 
