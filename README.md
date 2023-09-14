@@ -38,6 +38,8 @@
 
 * Wishlist Management: The wishlist management feature allows users to add products to their wishlist, display all product in wishlist, remove products, save this wislist  each user, allowing users to resume their shopping experience at a later time.
 
+* Contact Us: The Contact Us management feature allows you to know any problems you have and let us know about them
+
 * Validation: The validation feature ensures that user input and data received by the API are validated against predefined rules and constraints It includes input validation for various fields, such as checking for required fields, data types, length restrictions, and format validations. the e-commerce API project ensures data integrity, enhances security, and improves the overall reliability of the system by validating user input.
 
 * Error Handling: The error handling feature ensures that the API handles errors gracefully by providing appropriate error messages and responses. It includes handling validation errors, authentication errors, database errors, and other exceptional scenarios. Meaningful error messages are returned to users, facilitating troubleshooting and improving the user experience.
