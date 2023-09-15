@@ -1,5 +1,5 @@
 <h1 align="center" id="title">Smart Shop <span>(E-commerce-project)</span></h1>
-<p align="center"><img src="https://documenter.getpostman.com/view/27663911/2s9YC4Tsi5" alt="project-image" width="400"></p>
+<p align="center" id="title">https://documenter.getpostman.com/view/27663911/2s9YC4Tsi5</p>
 
 <p align="center"><img src="https://sevenblock.net/assets/images/projects/Smart%20Shop.png" alt="project-image" width="600"></p>
 
