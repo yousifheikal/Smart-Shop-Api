@@ -67,43 +67,19 @@ Technologies and tools used in the project:
 
 <h2>🛠️ Installation Steps:</h2>
 
-<p>1. Installation laravel project</p>
-
-```
-composer create-project laravel/laravel smart-shop-api
-```
-
-<p>2. JWT Authentication </p>
-
-```
-composer require tymon/jwt-auth
-```
-
-<p>3. Connection Database</p>
+<p>1. connection with Database</p>
 
 ```
 php artisan migrate
 ```
 
-<p>4. Create model,migration,controller,factory,seeder and validation</p>
+<p>2. Using fake data for testing</p>
 
 ```
-php artisan make:model example -a
+php artisan db:seed
 ```
 
-<p>5. create JsonResource</p>
-
-```
-php artisan make:resource ExampleResource
-```
-
-<p>6. connection and test with fake data</p>
-
-```
-php artisan mi:f --seed
-```
-
-<p>7. connection with local server</p>
+<p>3. Run Project</p>
 
 ```
 php artisan ser
